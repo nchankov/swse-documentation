@@ -1,0 +1,18 @@
+<section>
+    <h3>Sub-sections</h3>
+    <p>Use the following syntax to include files in the main template:</p>
+    <pre><code>&lt;!--include:sections/common/header.html--&gt;</code></pre>
+
+    <h4>Sub-sections with variables</h4>
+    <p>Sometimes you may want to pass variables to the included template:</p>
+    <pre><code>&lt;!--include:sections/header.html ["something" => "value"]--&gt;</code></pre>
+    <p>
+        With that example there would be a variable named <code>something</code> available in the included template 
+        with the value <code>value</code>. You can use it with <code>&lt;!--$something--&gt;</code> in the 
+        sections/header.html
+    </p>
+    <p><em>
+        N.B. It's important to note that variables passed from the actions would overwrite the variables passed to the 
+        included template.
+    </em></p>
+</section>

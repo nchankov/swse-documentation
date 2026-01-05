@@ -1,0 +1,29 @@
+<section>
+    <h3>If Statements</h3>
+    <p>Show or hide content based on conditions:</p>
+
+    <h4>Positive Condition (if truthy)</h4>
+    <pre><code>&lt;!--if($user_logged_in)--&gt;
+&lt;p&gt;Welcome back!&lt;/p&gt;
+&lt;!--endif--&gt;</code></pre>
+
+    <h4>Negative Condition (if falsy)</h4>
+    <pre><code>&lt;!--if(!$error)--&gt;
+&lt;p&gt;Everything looks good!&lt;/p&gt;
+&lt;!--endif--&gt;</code></pre>
+
+    <h4>With Array Access</h4>
+    <pre><code>&lt;!--if($user["premium"])--&gt;
+&lt;p&gt;Premium features unlocked!&lt;/p&gt;
+&lt;!--endif--&gt;
+
+&lt;!--if(!$user["verified"])--&gt;
+&lt;p&gt;Please verify your email&lt;/p&gt;
+&lt;!--endif--&gt;</code></pre>
+
+    <p><strong>Truthiness rules:</strong></p>
+    <ul>
+        <li>Truthy: non-empty strings, numbers (including 0), true, non-empty arrays</li>
+        <li>Falsy: empty strings, null, false, undefined variables</li>
+    </ul>
+</section>

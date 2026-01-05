@@ -1,0 +1,28 @@
+<section>
+    <h3>Foreach Loops</h3>
+    <p>
+        Loop through arrays using
+        <code>&lt;!--foreach()--&gt;</code>:
+    </p>
+    
+    <h4>Simple Loop (Value Only)</h4>
+    <pre>
+        <code>
+            &lt;!--foreach($products as $product)--&gt;
+            &lt;div&gt;
+            &lt;h3&gt;&lt;!--$product[name]--&gt;&lt;/h3&gt;
+            &lt;p&gt;&lt;!--$product[price]--&gt;&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;!--endforeach--&gt;
+        </code>
+    </pre>
+
+    <h4>Loop with Key and Value</h4>
+    <pre>
+        <code>
+            &lt;!--foreach($items as $key=&gt;$value)--&gt;
+            &lt;p&gt;Item #&lt;!--$key--&gt;: &lt;!--$value[name]--&gt;&lt;/p&gt;
+            &lt;!--endforeach--&gt;
+        </code>
+    </pre>
+</section>
