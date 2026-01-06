@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--include:/sections/common/head.html ["title" => "Template System"]-->
+    <body>
+        <!--include:/sections/common/header.html-->
+        <main>
+            <h2>API Example</h2>
+            <p>
+                The following can be used to construct a simple or complex REST API using the action only.
+            </p>
+            <div class="documentation">
+                <section>
+                    <h3>Action Handler (actions/public-api.php)</h3>
+                    <pre><code>&lt;?php
+class PublicApi {
+    public function get() {
+        // Handle GET request
+        $data = [
+            'status' => 'success',
+            'message' => 'GET request received'
+        ];
+        return json($data);
+    }
+    public function post() {
+        // Handle POST request
+        $data = [
+            'status' => 'success',
+            'message' => 'POST request received'
+        ];
+        return json($data);
+    }
+    public function put() {
+        // Handle PUT request
+        $data = [
+            'status' => 'success',
+            'message' => 'PUT request received'
+        ];
+        return json($data);
+    }
+    public function delete() {
+        // Handle DELETE request
+        $data = [
+            'status' => 'success',
+            'message' => 'DELETE request received'
+        ];
+        return json($data);
+    }
+
+    /** 
+    * Handle all other request methods which are not explicitly defined 
+    * In the example above, it would handle PATCH, OPTIONS, etc.
+    */
+    public function all() {
+        $data = [
+            'status' => 'success',
+            'message' => 'Handle ANY missing request method'
+        ];
+        return json($data, 405); // 405 Method Not Allowed
+    }
+}</code></pre>
+<p>
+    Once the action handler is set up, you can make HTTP requests to the corresponding endpoint, and the 
+    appropriate method will be executed based on the request method.
+</p>
+                </section>
+            </div>
+        </main>
+        <!--include:/sections/common/footer.html-->
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<section>
+    <h3>Helpers</h3>
+    
+    <h4>CSRF Token</h4>
+    <p>
+        Use 
+        <code>&lt;!--csrf--&gt;</code> to render a CSRF token input field in forms:
+    </p>
+    <pre><code>&lt;form action="/contact"&gt;
+    &lt;!--csrf--&gt;
+    &lt;input type="email" name="email" /&gt;
+    &lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;</code></pre>
+
+    <h4>Flash Messages</h4>
+    <p>
+        Use 
+        <code>&lt;!--flush--&gt;</code> to display all flash messages.
+    </p>
+    <pre><code>&lt;!--flush--&gt;     // Display all flash messages
+&lt;!--flush:key--&gt; // Display flash messages of a specific type</code></pre>
+<p>Flash messages are wrapped in a div with a type specific class for styling purposes for example:</p>
+<pre><code>&lt;div class="flash-success"&gt;Success message here&lt;/div&gt;</code></pre>
+</section>

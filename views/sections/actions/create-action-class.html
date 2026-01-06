@@ -1,0 +1,33 @@
+<section>
+                <h3>Creating an Action Class</h3>
+                <p>Create a PHP file in the <code>actions/</code> directory matching your content file name:</p>
+                <pre><code>&lt;?php
+// actions/contact.php
+class Contact {
+    public function get() {
+        // Runs on GET requests to /contact
+        // Prepare data, check auth, etc.
+
+        return ['title' => 'Hello!']; // This will be available as <!--$title--> in the template
+    }
+    
+    public function post() {
+        // Runs on POST requests to /contact
+        // Process forms, save data, etc.
+        $this->validateCsrf();
+        
+        $name = getPost('name');
+        // ... process data
+        
+        redirect('/success');
+    }
+}</code></pre>
+<h4>Tips:</h4>
+<ul>
+    <li>
+        You can create a common parent class (e.g. <code>App</code>) which your actions can extend to share 
+        functionality.
+    </li>
+    <li>Behind the actions you can use/create other logic to connect to databases, APIs, or other services.</li>
+</ul>
+</section>

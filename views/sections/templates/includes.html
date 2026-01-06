@@ -1,18 +1,29 @@
 <section>
     <h3>Sub-sections</h3>
+    <p>
+        Subsections are smaller parts of a template that can be included in other templates to avoid repetition 
+        and improve organization.
+    </p>
+    <p><em>
+        Important: If the path starts with a slash (e.g. <code>/sections/header.html</code>) it would be considered 
+        relative to the top <code>views/</code> directory. If it doesn't start with a slash (e.g. 
+        <code>sections/header.html</code>) it would be considered relative to the current template file.
+    </em></p>
     <p>Use the following syntax to include files in the main template:</p>
-    <pre><code>&lt;!--include:sections/common/header.html--&gt;</code></pre>
+    <pre><code>&lt;!--include:sections/common/header.html--&gt;
+&lt;!--include:/sections/common/header.html--&gt;</code></pre>
 
     <h4>Sub-sections with variables</h4>
     <p>Sometimes you may want to pass variables to the included template:</p>
-    <pre><code>&lt;!--include:sections/header.html ["something" => "value"]--&gt;</code></pre>
+    <pre><code>&lt;!--include:sections/header.html ["something" => "value"]--&gt;
+&lt;!--include:/sections/header.html ["something" => "value"]--&gt;</code></pre>
     <p>
         With that example there would be a variable named <code>something</code> available in the included template 
         with the value <code>value</code>. You can use it with <code>&lt;!--$something--&gt;</code> in the 
         sections/header.html
     </p>
     <p><em>
-        N.B. It's important to note that variables passed from the actions would overwrite the variables passed to the 
+        It's important to note that variables passed from the actions would overwrite the variables passed to the 
         included template.
     </em></p>
 </section>
