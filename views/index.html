@@ -47,7 +47,7 @@
                     
                     <h4>.htaccess file</h4>
                     <p>Add the following file into <code>/var/www/project-root/public/.htaccess</code></p>
-                    <pre><code>RewriteEngine On
+                    <pre class="copy"><code>RewriteEngine On
 
 # Don't rewrite files or directories that exist
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -61,7 +61,7 @@ RewriteRule ^(.*)$ index.php [QSA,L]
                     <h4>index.php file</h4>
 
                     <p>Add the following file into <code>/var/www/project-root/public/index.php</code></p>
-                    <pre><code>&lt;?php
+                    <pre class="copy"><code>&lt;?php
 include_once(__DIR__ . '/../swse/engine.php');
 process(dirname(__DIR__));</code></pre>
                     <p>
@@ -79,7 +79,7 @@ process(dirname(__DIR__));</code></pre>
                             <code>.gitignore</code> file to exclude at least <code>swse</code>
                         </em>
                     </p>
-                    <pre><code># .gitignore file
+                    <pre class="copy"><code># .gitignore file
 swse</code></pre>
                 </section>
                 <section>
@@ -94,7 +94,7 @@ swse</code></pre>
                     <div>
                         <h4>Why this is not a PHP Composer package</h4>
                         <p>
-                            The SWSE is within only one file and it's not intended to build complex frameworks. If you want 
+                            The SWSE is within only one file and it's not intended to build complex projects. If you want 
                             something robust - use Laravel, Symfony, or other full-featured frameworks. The SWSE is meant to 
                             be simple and easy to use without the need of Composer or other package managers.
                         </p>
