@@ -98,7 +98,7 @@ code {
     font-size: 0.9em;
 }
 
-section ul {
+section ul, section ol {
     margin-left: 2rem;
     margin-top: 0.5rem;
 }
