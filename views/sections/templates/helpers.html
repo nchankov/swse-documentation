@@ -48,4 +48,20 @@
 Any valid PHP date format parameter works
 </code></pre>
 
+    <h4>Pagination</h4>
+    <p>
+        Use 
+        <code>&lt;!--pagination--&gt;</code> to display a basic pagination navigation.
+    </p>
+    <pre><code>&lt;!--pagination--&gt;   // Pagination with default 10 items per page
+&lt;!--pagination 50--&gt;   // Pagination with default 10 items per page</code></pre>
+    <p>
+        The pagination rely on a <code>page</code> parameter in the url e.g. 
+        <code>https://server.com/users?page=2</code>
+        it would show the records from 11 to 20 if there are more than 10 records.
+    </p>
+    <p>
+        The action should pass a variable called <code>totalRecords</code> which should contain the total number of 
+        records to paginate. See <a href="/examples/pagination">pagionation example</a> in the Examples section.
+    </p>
 </section>
