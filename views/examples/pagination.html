@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--include:/sections/common/head.html ["title" => "Template System"]-->
+    <body>
+        <!--include:/sections/common/header.html-->
+        <main>
+            <h2>Pagination Example</h2>
+            <p>
+                The following example demponstrates how to use pagination in your application.
+            </p>
+            <div class="documentation">
+                <section>
+                    <h3>Action Handler (actions/users.php)</h3>
+                    <pre class="copy"><code>&lt;?php
+class Users {
+    public function get() {
+        //Get pagination parameters
+        $currentPage = getQuery('page', 1);
+        $perPage = 10;
+        
+        // Assume this returns an array of 10 users
+        $users = getUsersFromDatabase($currentPage, $perPage);
+
+        // Assume this returns the total number of users e.g. 200
+        $totalUsers = getTotalUserCount();
+        return [
+            'users' => $users,
+            'totalRecords' => $totalUsers
+        ];
+    }
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Template (views/users.html)</h3>
+                    <pre class="copy"><code>&lt;h1&gt;Users&lt;/h1&gt;
+&lt;!--foreach($users as $user)--&gt;
+    &lt;div class="user"&gt;
+        &lt;h3&gt;&lt;!--$user[name]--&gt;&lt;/h3&gt;
+        &lt;p&gt;Email: &lt;!--$user[email]--&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;!--endforeach--&gt;
+&lt;!--pagination--&gt;</code></pre>
+                    <p>If you want to change the number of records per page, you can pass the variable in the shortcode as:</p>
+                    <pre class="copy"><code>&lt;!--pagination 20--&gt;</code></pre>
+                    <p>This would show 20 records per page instead of the default 10.</p>
+                </section>
+            </div>
+        </main>
+        <!--include:/sections/common/footer.html-->
+    </body>
+</html>
