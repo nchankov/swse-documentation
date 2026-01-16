@@ -11,6 +11,10 @@
             <div class="documentation">
                 <section>
                     <h3>Action Handler (actions/users.php)</h3>
+                    <p>
+                        Use the <code>get()</code> method to pass the <code>totalRecords</code> and the slice of the 
+                        data to display
+                    </p>
                     <pre class="copy"><code>&lt;?php
 class Users {
     public function get() {
@@ -32,6 +36,9 @@ class Users {
                 </section>
                 <section>
                     <h3>Template (views/users.html)</h3>
+                    <p>
+                        Loop the records and below put the <code>&lt;!--pagination--&gt;</code> shortcode
+                    </p>
                     <pre class="copy"><code>&lt;h1&gt;Users&lt;/h1&gt;
 &lt;!--foreach($users as $user)--&gt;
     &lt;div class="user"&gt;
