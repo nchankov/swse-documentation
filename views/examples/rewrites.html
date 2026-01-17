@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--include:/sections/common/head.html ["title" => "Template System"]-->
+    <body>
+        <!--include:/sections/common/header.html-->
+        <main>
+            <h2>Rewrite URLs Example</h2>
+            <p>
+                The following example demonstrates how to use URL rewrites in your application.
+            </p>
+            
+            <div class="documentation">
+                <section>
+                    <h3>Introduction</h3>
+                    <p>
+                        In some cases, you may want to have cleaner URLs for your website. 
+                        This can be achieved by using URL rewrites. This is an example of how to set up URL rewrites 
+                        using an <code>.htaccess</code> file, which is commonly used with Apache web servers.
+                    </p>
+                </section>
+                <section>
+                    <h3>Example url structure</h3>
+                    <p>
+                        Let's say you have a product cataog where each product has it's own page.
+                    </p>
+                    
+                    <pre><code>https://example.com/product?id=123</code></pre>
+                    <p>
+                        Your <em title="a person who can't code 😊">SEO guru</em> told you that product URLs should be
+                        cleaner and more <em title="bullshit, but anyway 😂">SEO friendly</em> if they look like:
+                    </p>
+                    <pre><code>https://example.com/prod/123</code></pre>
+                </section>
+                <section>
+                    <h3>Setting up the .htaccess file</h3>
+                    <p>
+                        To achieve this, you can add the following rules to your <code>.htaccess</code> file in the 
+                        <code>/public</code> directory:
+                    </p>
+                    <pre class="copy"><code>RewriteEngine On
+
+##### START: Rewrite rules for product URLs #####
+
+# Step 1: redirect /product?id=123 to /product/123
+RewriteCond %{THE_REQUEST} product\?id=([^&\ ]+)
+RewriteRule ^ /prod/%1? [L,R=301]
+
+# Step 2: Rewrite /product/123 to index.php?__route=product&id=123
+RewriteRule ^prod/([^/]+)/?$ index.php?__route=product&id=$1 [QSA,L]
+
+##### END: Rewrite rules for product URLs #####
+
+# Route everything else through index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]</code></pre>
+                    <h4>Detailed explanation:</h4>
+                    <h5>Step 1:</h5>
+                    <p>
+                        Redirect any request from the old URL format <code>/product?id=123</code> to the new 
+                        format <code>/prod/123</code>.
+                    </p>
+                    <p>if someone access:</p>
+                    <pre><code>https://example.com/product?id=123 -> https://example.com/prod/123</code></pre>
+                    <h5>Step 2:</h5>
+                    <p>
+                        Rewrites the new URL format <code>/prod/123</code> to the internal script 
+                        <code>index.php?__route=product&id=123</code>, allowing your application to handle the request 
+                        appropriately.
+                    </p>
+                    <p>
+                        The second part is most important as without it the new url would result in 404 page. 
+                        The most important part here is the <code>__route={action}</code> query parameter, which tells 
+                        your application that the request is for the <code>product</code> action in the example above.
+                    </p>
+                </section>
+            </div>
+        </main>
+        <!--include:/sections/common/footer.html-->
+    </body>
+</html>
