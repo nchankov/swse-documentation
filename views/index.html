@@ -56,7 +56,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Route everything through index.php
 RewriteRule ^(.*)$ index.php [QSA,L]
 </code></pre>
-                    <p><em>This would redirect any request through <code>index.php</code> in the public directory.</em></p>
+                    <p>
+                        <em>This would redirect any request through <code>index.php</code> in the public directory.</em>
+                        See an example how to use url rewrites <a href="/examples/rewrites">here</a>.
+                    </p>
 
                     <h4>index.php file</h4>
 
