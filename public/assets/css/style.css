@@ -138,3 +138,7 @@ main {
 footer {
   flex-shrink: 0;
 }
+
+.green {
+    color: #28a745;
+}
