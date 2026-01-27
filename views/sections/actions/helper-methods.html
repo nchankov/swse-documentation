@@ -1,24 +1,32 @@
-<section>
+<section id="helper-methods">
     <h3>Helper Methods</h3>
     <p>All action classes extend <code>App</code> and have access to these helper methods:</p>
     
-    <h4>Navigation</h4>
-    <pre><code>redirect('/success');              // Redirect to another page
+    <div>
+        <h4>Navigation</h4>
+        <pre><code>redirect('/success');              // Redirect to another page
 json(['status' => 'ok']);          // Return JSON response instead of html content
 json(['status' => 'failed'], 503); // Return JSON response instead of html content with status code 501</code></pre>
+    </div>
     
-    <h4>Data Access</h4>
-    <pre><code>$name = getPost('name', 'default');     // Get POST data sanitized
+    <div>
+        <h4>Data Access</h4>
+        <pre><code>$name = getPost('name', 'default');     // Get POST data sanitized
 $query = getQuery('q', '');             // Get GET data sanitized</code></pre>
-    <p>Using those methods helps prevent XSS attacks by sanitizing input data.</p>
-    <h4>Flash Messages</h4>
-    <pre><code>setFlash('success', 'Message sent!');   // Set flash message
+        <p>Using those methods helps prevent XSS attacks by sanitizing input data.</p>
+    </div>
+    <div>
+        <h4>Flash Messages</h4>
+        <pre><code>setFlash('success', 'Message sent!');   // Set flash message
 $msg = getFlash('success');             // Get and clear flash</code></pre>
-    
-    <h4>Security</h4>
-    <pre><code>verifyCsrf();</code></pre>
-    <p>
-        Use this in the post method to protect against CSRF attacks. If the CSRF token is invalid, the request 
-        will be rejected.
-    </p>
+        <p>See how to use flash messages in your templates <a href="/templates#helpers">here</a>.</p>
+    </div>
+    <div>
+        <h4>Security</h4>
+        <pre><code>verifyCsrf();</code></pre>
+        <p>
+            Use this in the post method to protect against CSRF attacks. If the CSRF token is invalid, the request 
+            will be rejected.
+        </p>
+    </div>
 </section>

@@ -1,4 +1,4 @@
-<section>
+<section id="create-action-class">
                 <h3>Creating an Action Class</h3>
                 <p>Create a PHP file in the <code>actions/</code> directory matching your content file name:</p>
                 <pre><code>&lt;?php
@@ -7,6 +7,9 @@ class Contact {
     public function get() {
         // Runs on GET requests to /contact
         // Prepare data, check auth, etc.
+        
+        // Access to .env parameters
+        $var = $_ENV['SOME_PARAMETER'];
 
         return ['title' => 'Hello!']; // This will be available as <!--$title--> in the template
     }
