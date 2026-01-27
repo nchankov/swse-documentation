@@ -8,7 +8,7 @@
             <code>&lt;!--csrf--&gt;</code> to render a CSRF token input field in forms:
         </p>
         <pre><code>&lt;form action="/contact"&gt;
-    &lt;!--csrf--&gt;
+    <span class="code-highlight">&lt;!--csrf--&gt;</span>
     &lt;input type="email" name="email" /&gt;
     &lt;input type="submit" value="Submit" /&gt;
 &lt;/form&gt;</code></pre>        
@@ -16,7 +16,7 @@
             Use 
             <code>&lt;!--csrf_token--&gt;</code> to render just the CSRF token value:
         </p>
-        <pre><code>&lt;!--csrf_token--&gt;</code></pre>
+        <pre><code><span class="code-highlight">&lt;!--csrf_token--&gt;</span></code></pre>
         <p>Outputs something like <code>2e6094ee18b504915519fc16f2d605e35e4e167f73e242c273fe70be31911e1c</code></p>
     </div>
     <div id="flash-messages">
@@ -25,8 +25,8 @@
             Use 
             <code>&lt;!--flush--&gt;</code> to display all flash messages.
         </p>
-        <pre><code>&lt;!--flush--&gt;     // Display all flash messages
-&lt;!--flush:key--&gt; // Display flash messages of a specific type</code></pre>
+        <pre><code><span class="code-highlight">&lt;!--flush--&gt;</span>     // Display all flash messages
+<span class="code-highlight">&lt;!--flush:key--&gt;</span> // Display flash messages of a specific type</code></pre>
         <p>Flash messages are wrapped in a div with a type specific class for styling purposes for example:</p>
         <pre><code>&lt;div class="flash-success"&gt;Success message here&lt;/div&gt;</code></pre>
     </div>
@@ -37,18 +37,18 @@
             <code>&lt;!--date [format]--&gt;</code> to display the current date/time in various formats.
             If no format is provided, the default format <code>Y-m-d H:i:s</code> is used.
         </p>
-        <pre><code>&lt;!--date--&gt;               // Current date/time in default format
-&lt;!--date Y--&gt;             // Just the year
-&lt;!--date d/m/Y--&gt;         // Date in day/month/year format
-&lt;!--date F j, Y--&gt;       // Full month name, day, year
-&lt;!--date l, F j, Y--&gt;    // Day of week, full month name, day, year</code></pre>
+        <pre><code><span class="code-highlight">&lt;!--date--&gt;</span>               // Current date/time in default format
+<span class="code-highlight">&lt;!--date Y--&gt;</span>             // Just the year
+<span class="code-highlight">&lt;!--date d/m/Y--&gt;</span>         // Date in day/month/year format
+<span class="code-highlight">&lt;!--date F j, Y--&gt;</span>       // Full month name, day, year
+<span class="code-highlight">&lt;!--date l, F j, Y--&gt;</span>    // Day of week, full month name, day, year</code></pre>
     <p>Examples:</p>
-<pre><code>&lt;!--date--&gt;               - Returns current date/time in default format: 2026-01-08 14:30:45
-&lt;!--date Y--&gt;             - Returns just the year: 2026
-&lt;!--date d/m/Y--&gt;         - Returns date in day/month/year format: 08/01/2026
-&lt;!--date F j, Y--&gt;       - Returns: January 8, 2026
-&lt;!--date l, F j, Y--&gt;    - Returns: Wednesday, January 8, 2026
-Any valid PHP date format parameter works</code></pre>
+<pre><code><span class="code-highlight">&lt;!--date--&gt;</span>               - Returns current date/time in default format: 2026-01-08 14:30:45
+<span class="code-highlight">&lt;!--date Y--&gt;</span>             - Returns just the year: 2026
+<span class="code-highlight">&lt;!--date d/m/Y--&gt;</span>         - Returns date in day/month/year format: 08/01/2026
+<span class="code-highlight">&lt;!--date F j, Y--&gt;</span>       - Returns: January 8, 2026
+<span class="code-highlight">&lt;!--date l, F j, Y--&gt;</span>    - Returns: Wednesday, January 8, 2026</code></pre>
+        <p>Any valid PHP date format parameter works</p>
     </div>
     <div id="pagination">
         <h4>Pagination</h4>
@@ -56,8 +56,8 @@ Any valid PHP date format parameter works</code></pre>
             Use 
             <code>&lt;!--pagination--&gt;</code> to display a basic pagination navigation.
         </p>
-        <pre><code>&lt;!--pagination--&gt;   // Pagination with default 10 items per page
-&lt;!--pagination 50--&gt;   // Pagination with 50 items per page</code></pre>
+        <pre><code><span class="code-highlight">&lt;!--pagination--&gt;</span>   // Pagination with default 10 items per page
+<span class="code-highlight">&lt;!--pagination 50--&gt;</span>   // Pagination with 50 items per page</code></pre>
         <p>
             The pagination rely on a <code>page</code> parameter in the url e.g. 
             <code>https://server.com/users?page=2</code>

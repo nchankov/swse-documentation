@@ -3,23 +3,23 @@
     <p>Show or hide content based on conditions:</p>
 
     <h4>Positive Condition (if truthy)</h4>
-    <pre><code>&lt;!--if($user_logged_in)--&gt;
-&lt;p&gt;Welcome back!&lt;/p&gt;
-&lt;!--endif--&gt;</code></pre>
+    <pre><code><span class="code-highlight">&lt;!--if($user_logged_in)--&gt;</span>
+    &lt;p&gt;Welcome back!&lt;/p&gt;
+<span class="code-highlight">&lt;!--endif--&gt;</span></code></pre>
 
     <h4>Negative Condition (if falsy)</h4>
-    <pre><code>&lt;!--if(!$error)--&gt;
-&lt;p&gt;Everything looks good!&lt;/p&gt;
-&lt;!--endif--&gt;</code></pre>
+    <pre><code><span class="code-highlight">&lt;!--if(!$error)--&gt;</span>
+    &lt;p&gt;Everything looks good!&lt;/p&gt;
+<span class="code-highlight">&lt;!--endif--&gt;</span></code></pre>
 
     <h4>With Array Access</h4>
-    <pre><code>&lt;!--if($user["premium"])--&gt;
-&lt;p&gt;Premium features unlocked!&lt;/p&gt;
-&lt;!--endif--&gt;
+    <pre><code><span class="code-highlight">&lt;!--if($user["premium"])--&gt;</span>
+    &lt;p&gt;Premium features unlocked!&lt;/p&gt;
+<span class="code-highlight">&lt;!--endif--&gt;</span>
 
-&lt;!--if(!$user["verified"])--&gt;
-&lt;p&gt;Please verify your email&lt;/p&gt;
-&lt;!--endif--&gt;</code></pre>
+<span class="code-highlight">&lt;!--if(!$user["verified"])--&gt;</span>
+    &lt;p&gt;Please verify your email&lt;/p&gt;
+<span class="code-highlight">&lt;!--endif--&gt;</span></code></pre>
 
     <p><strong>Truthiness rules:</strong></p>
     <ul>

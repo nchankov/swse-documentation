@@ -6,15 +6,15 @@
     </p>
     
     <h4>Simple Loop (Value Only)</h4>
-    <pre><code>&lt;!--foreach($products as $product)--&gt;
-&lt;div&gt;
-&lt;h3&gt;&lt;!--$product[name]--&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;!--$product[price]--&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;!--endforeach--&gt;</code></pre>
+    <pre><code><span class="code-highlight">&lt;!--foreach($products as $product)--&gt;</span>
+    &lt;div&gt;
+    &lt;h3&gt;<span class="code-highlight">&lt;!--$product[name]--&gt;</span>&lt;/h3&gt;
+    &lt;p&gt;<span class="code-highlight">&lt;!--$product[price]--&gt;</span>&lt;/p&gt;
+    &lt;/div&gt;
+<span class="code-highlight">&lt;!--endforeach--&gt;</span></code></pre>
 
     <h4>Loop with Key and Value</h4>
-    <pre><code>&lt;!--foreach($items as $key=&gt;$value)--&gt;
-&lt;p&gt;Item #&lt;!--$key--&gt;: &lt;!--$value[name]--&gt;&lt;/p&gt;
-&lt;!--endforeach--&gt;</code></pre>
+    <pre><code><span class="code-highlight">&lt;!--foreach($items as $key=&gt;$value)--&gt;</span>
+&lt;p&gt;Item #<span class="code-highlight">&lt;!--$key--&gt;</span>: <span class="code-highlight">&lt;!--$value[name]--&gt;</span>&lt;/p&gt;
+<span class="code-highlight">&lt;!--endforeach--&gt;</span></code></pre>
 </section>
