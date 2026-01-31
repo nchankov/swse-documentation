@@ -1,0 +1,31 @@
+<section id="layouts">
+    <h3>Layouts</h3>
+    <p>
+        Layouts allow defining a common structure for templates, enabling code reuse and maintaining a 
+        consistent look and feel across the application. Layouts serve as a wrapper around content.
+    </p>
+    <p>Layouts reside in the <code>layouts/</code> directory of the project</p>
+    <p>To define a layout for a template, use the following syntax at the very top of the template file:</p>
+    <pre><code><span class="code-highlight">&lt;!--layout:/main-layout.html--&gt;</span></code></pre>
+    <p>
+        The path starting with <code>/</code> would be relative to the top <code>layouts/</code> directory.
+    </p>
+    <p>
+        The layout file should contain a special placeholder where the content of the child template will be injected. 
+        Use the following syntax for the placeholder:
+    </p>
+    <pre><code><span class="code-highlight">&lt;!--layout-content--&gt;</span></code></pre>
+    <p>
+        When the template is rendered, the content of the child template will replace the 
+        <code>&lt;!--layout-content--&gt;</code> placeholder in the layout file.
+    </p>
+    <p>
+        Variables can also be passed from the child template to the layout. For example:
+    </p>
+    <pre><code><span class="code-highlight">&lt;!--layout:/main-layout.html ["key" => "Value"]--&gt;</span></code></pre>
+    <p>
+        In the layout, the normal variable notation <code>&lt;!--$key--&gt;</code> can be used to display the value.
+    </p>
+    <p>The variables would be overwritten from the action variables if they are present.</p>
+    <p>In the layout, include statements, conditional statements, and variables can be used.</p>
+</section>

@@ -14,12 +14,12 @@
 <span class="code-highlight">&lt;!--include:/sections/common/header.html--&gt;</span></code></pre>
 
     <h4>Sub-sections with variables</h4>
-    <p>Sometimes you may want to pass variables to the included template:</p>
+    <p>Variables can be passed to the included template:</p>
     <pre><code><span class="code-highlight">&lt;!--include:sections/header.html ["something" => "value"]--&gt;</span>
 <span class="code-highlight">&lt;!--include:/sections/header.html ["something" => "value"]--&gt;</span></code></pre>
     <p>
         With that example there would be a variable named <code>something</code> available in the included template 
-        with the value <code>value</code>. You can use it with <code>&lt;!--$something--&gt;</code> in the 
+        with the value <code>value</code>. It can be used with <code>&lt;!--$something--&gt;</code> in the 
         sections/header.html
     </p>
     <p><em>
