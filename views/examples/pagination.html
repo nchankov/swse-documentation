@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-    <!--include:/sections/common/head.html ["title" => "Pagination Example"]-->
-    <body>
-        <!--include:/sections/common/header.html-->
-        <main>
-            <h2>Pagination Example</h2>
-            <p>
-                The following example demponstrates how to use pagination in your application.
-            </p>
-            <div class="documentation">
-                <section>
-                    <h3>Action Handler (actions/users.php)</h3>
-                    <p>
-                        Use the <code>get()</code> method to pass the <code>totalRecords</code> and the slice of the 
-                        data to display
-                    </p>
-                    <pre class="copy"><code>&lt;?php
+<!--layout:/default.html ["title" => "Pagination Example"]-->
+<p>
+    The following example demponstrates how to use pagination in your application.
+</p>
+<section id="actions">
+    <h3>Action Handler (actions/users.php)</h3>
+    <p>
+        Use the <code>get()</code> method to pass the <code>totalRecords</code> and the slice of the 
+        data to display
+    </p>
+    <pre class="copy"><code>&lt;?php
 class Users {
     public function get() {
         //Get pagination parameters
@@ -33,13 +26,14 @@ class Users {
         ];
     }
 }</code></pre>
-                </section>
-                <section>
-                    <h3>Template (views/users.html)</h3>
-                    <p>
-                        Loop the records and below put the <code>&lt;!--pagination--&gt;</code> shortcode
-                    </p>
-                    <pre class="copy"><code>&lt;h1&gt;Users&lt;/h1&gt;
+</section>
+
+<section id="views">
+    <h3>Template (views/users.html)</h3>
+    <p>
+        Loop the records and below put the <code>&lt;!--pagination--&gt;</code> shortcode
+    </p>
+    <pre class="copy"><code>&lt;h1&gt;Users&lt;/h1&gt;
 &lt;!--foreach($users as $user)--&gt;
     &lt;div class="user"&gt;
         &lt;h3&gt;&lt;!--$user[name]--&gt;&lt;/h3&gt;
@@ -47,14 +41,15 @@ class Users {
     &lt;/div&gt;
 &lt;!--endforeach--&gt;
 &lt;!--pagination--&gt;</code></pre>
-                    <p>If you want to change the number of records per page, you can pass the variable in the shortcode as:</p>
-                    <pre class="copy"><code>&lt;!--pagination 20--&gt;</code></pre>
-                    <p>This would show 20 records per page instead of the default 10.</p>
-                </section>
-                <section>
-                    <h3>CSS Styling</h3>
-                    Use the following CSS to style the pagination (tweak as needed):
-                    <pre class="copy"><code>.pagination {
+    <p>If you want to change the number of records per page, you can pass the variable in the shortcode as:</p>
+    <pre class="copy"><code>&lt;!--pagination 20--&gt;</code></pre>
+    <p>This would show 20 records per page instead of the default 10.</p>
+</section>
+
+<section id="css">
+    <h3>CSS Styling</h3>
+    Use the following CSS to style the pagination (tweak as needed):
+    <pre class="copy"><code>.pagination {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -100,9 +95,4 @@ class Users {
 .pagination.single-page {
     display: none;
 }</code></pre>
-                </section>
-            </div>
-        </main>
-        <!--include:/sections/common/footer.html-->
-    </body>
-</html>
+</section>

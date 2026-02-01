@@ -1,55 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-    <!--include:/sections/common/head.html ["title" => "Markdown Blog Example"]-->
-    <body>
-        <!--include:/sections/common/header.html-->
-        <main>
-            <h2>Markdown Blog Example</h2>
-            <div class="documentation">
-                <p>
-                    The Markdown blog example is a little bit more complex than the other examples,
-                    but it demonstrates how to create a simple blog using Markdown files as the content source.
-                    Each blog post is stored as a separate Markdown file in the <code>articles/</code> directory.
-                    The example includes an action handler to read the Markdown files, convert them to HTML,
-                    and render them using a template.
-                </p>
-            </div>
-            <div class="documentation">
-                <section id="prerequisites">
-                    <h3>Prerequisites</h3>
-                    <h4>Installing Parsedown and Yaml-Front-Matter</h4>
-                    <p>
-                        For this example an external libraries are used called Parsedown and YAML Front Matter 
-                        are used and has to be installed using composer.</p>
-                    <pre class="copy"><code>composer require erusev/parsedown
-composer require spatie/yaml-front-matter</code></pre>
-                    <p>
-                        This would create <code>vendor/</code> directory in the project root directory. 
-                        The vendor/autoload.php would be automatically included if it's present.
-                    </p>
-                </section>
+<!--layout:/default.html ["title" => "Markdown Blog Example"]-->
 
-                <section id="url-and-file-structure">
-                    <h3>URL and File Structure</h3>
-                    <p>To create a blog functionality into an existing website with
-                        the following URLs:</p>
-                    <pre><code>https://example.com/blog/           # would map to /blog/index.php
+<p>
+    The Markdown blog example is a little bit more complex than the other examples,
+    but it demonstrates how to create a simple blog using Markdown files as the content source.
+    Each blog post is stored as a separate Markdown file in the <code>articles/</code> directory.
+    The example includes an action handler to read the Markdown files, convert them to HTML,
+    and render them using a template.
+</p>
+
+
+<section id="prerequisites">
+    <h3>Prerequisites</h3>
+    <h4>Installing Parsedown and Yaml-Front-Matter</h4>
+    <p>
+        For this example an external libraries are used called Parsedown and YAML Front Matter 
+        are used and has to be installed using composer.</p>
+    <pre class="copy"><code>composer require erusev/parsedown
+composer require spatie/yaml-front-matter</code></pre>
+    <p>
+        This would create <code>vendor/</code> directory in the project root directory. 
+        The vendor/autoload.php would be automatically included if it's present.
+    </p>
+</section>
+
+<section id="url-and-file-structure">
+    <h3>URL and File Structure</h3>
+    <p>To create a blog functionality into an existing website with
+        the following URLs:</p>
+    <pre><code>https://example.com/blog/           # would map to /blog/index.php
 https://example.com/blog/article    # would map to /blog/article.php</code></pre>
-                    <p>The following file structure is needed:</p>
-                    <pre><code>/var/www/project-root
+    <p>The following file structure is needed:</p>
+    <pre><code>/var/www/project-root
 |- /actions/blog
 │- |- /index.php          # Handle article list requests (with pagination)
 │- |- /article.php        # Handle single article requests
 |- /views/blog
 │- |- /index.html         # Template for article list
 │- |- /article.html       # Template for single article
-|- /articles              # Markdown files for blog posts
-</code></pre>
-                </section>
-                <section id="actions">
-                    <h3>Actions</h3>
-                    <h4>blog/index.php</h4>
-                    <pre><code>&lt;?php
+|- /articles              # Markdown files for blog posts</code></pre>
+</section>
+<section id="actions">
+    <h3>Actions</h3>
+    <h4>blog/index.php</h4>
+    <pre><code>&lt;?php
 class Index {
     public function get() {
         //Get pagination parameter
@@ -115,8 +108,9 @@ class Index {
         ];
     }
 }</code></pre>
-                    <h4>blog/article.php</h4>
-                    <pre><code>&lt;?php
+
+    <h4>blog/article.php</h4>
+    <pre><code>&lt;?php
 class Article
 {
     public function get()
@@ -150,11 +144,11 @@ class Article
         ];
     }
 }</code></pre>
-                </section>
-                <section id="views">
-                    <h3>Views</h3>
-                    <h4>blog/index.htlm</h4>
-                    <pre><code>&lt;!--layout:/blog-layout.html--&gt;
+</section>
+<section id="views">
+    <h3>Views</h3>
+    <h4>blog/index.htlm</h4>
+    <pre><code>&lt;!--layout:/blog-layout.html--&gt;
 &lt;section&gt;
     &lt;!--foreach($articles as $article)--&gt;
         &lt;article&gt;
@@ -166,10 +160,10 @@ class Article
     &lt;!--endforeach--&gt;
     &lt;!--pagination--&gt;
 &lt;/section&gt;
-                    </code></pre>
+    </code></pre>
 
-                    <h4>blog/article.html</h4>
-                    <pre><code>
+    <h4>blog/article.html</h4>
+    <pre><code>
 &lt;!--layout:/blog-layout.html--&gt;
 &lt;article&gt;
     &lt;h1&gt;&lt;!--$title--&gt;&lt;/h1&gt;
@@ -177,14 +171,14 @@ class Article
     
     &lt;a href="/blog/"&gt;Back to Articles list&lt;/a&gt;
 &lt;/article&gt;
-                    </code></pre>
-                </section>
-                <section id="mardown-file">
-                    <h3>What a markdown file would look like?</h3>
-                    <p>The markdown file should have the following structure to allow extracting 
-                        the page title and image from the file for the article list.
-                    </p>
-                    <pre><code>---
+    </code></pre>
+</section>
+<section id="mardown-file">
+    <h3>What a markdown file would look like?</h3>
+    <p>The markdown file should have the following structure to allow extracting 
+        the page title and image from the file for the article list.
+    </p>
+    <pre><code>---
 title: "My First Blog Post"
 image: "/assets/blog/img/my-first-blog-post-featured.jpg"
 ---
@@ -192,10 +186,5 @@ image: "/assets/blog/img/my-first-blog-post-featured.jpg"
 Welcome to my blog! This is where I share my thoughts and experiences.
 ![An image in the blog post](/assets/blog/img/my-first-blog-post-image.jpg)
 Here is some more content in **Markdown** format.
-                    </code></pre>
-                </section>
-            </div>
-        </main>
-        <!--include:/sections/common/footer.html-->
-    </body>
-</html>
+    </code></pre>
+</section>

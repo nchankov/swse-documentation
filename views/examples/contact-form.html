@@ -1,38 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-    <!--include:/sections/common/head.html ["title" => "Contact Form Example"]-->
-    <body>
-        <!--include:/sections/common/header.html-->
-        <main>
-            <h2>Contact Form Example</h2>
-            <p>
-                The following can be used to construct a simple contact form using the view and action.
-            </p>
-            <div class="documentation">
-                <section>
-                    <h3>Template (views/contact-form.html)</h3>
-                    <pre class="copy"><code>&lt;h1&gt;Contact Us&lt;/h1&gt;
-&lt;!--flush--&gt;
-&lt;form method="post" action="/contact-form"&gt;
-    &lt;!--csrf--&gt;
-    &lt;div class="field"&gt;
-        &lt;label for="name"&gt;Name:&lt;/label&gt;
-        &lt;input type="text" id="name" name="name" required&gt;
-    &lt;/div&gt;
-    &lt;div class="field"&gt;
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email" required&gt;
-    &lt;/div&gt;
-    &lt;div class="field"&gt;
-        &lt;label for="message"&gt;Message:&lt;/label&gt;
-        &lt;textarea id="message" name="message" required&gt;&lt;/textarea&gt;
-    &lt;/div&gt;
-    &lt;button type="submit"&gt;Send&lt;/button&gt;
-&lt;/form&gt;</code></pre>
-                </section>
-                <section>
-                    <h3>Action Handler (actions/contact-form.php)</h3>
-                    <pre class="copy"><code>&lt;?php
+<!--layout:/default.html ["title" => "Contact Form Example"]-->
+<p>
+    The following can be used to construct a simple contact form using the view and action.
+</p>
+
+<section id="action">
+    <h3>Action Handler (actions/contact-form.php)</h3>
+    <pre class="copy"><code>&lt;?php
 class ContactForm {
     public function post() {
         // Validate CSRF. 
@@ -57,9 +30,26 @@ class ContactForm {
         return ['name' =&gt; $name, 'email' =&gt; $email, 'message' =&gt; $message];
     }
 }</code></pre>
-                </section>
-            </div>
-        </main>
-        <!--include:/sections/common/footer.html-->
-    </body>
-</html>
+</section>
+
+<section id="template">
+    <h3>Template (views/contact-form.html)</h3>
+    <pre class="copy"><code>&lt;h1&gt;Contact Us&lt;/h1&gt;
+&lt;!--flush--&gt;
+&lt;form method="post" action="/contact-form"&gt;
+    &lt;!--csrf--&gt;
+    &lt;div class="field"&gt;
+        &lt;label for="name"&gt;Name:&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" required&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+        &lt;label for="message"&gt;Message:&lt;/label&gt;
+        &lt;textarea id="message" name="message" required&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</section>
