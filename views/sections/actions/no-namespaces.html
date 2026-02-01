@@ -1,0 +1,18 @@
+<section id="no-namespaces">
+    <h3>Namespaces in actions</h3>
+    <p>
+        There is no need to use namespaces in actions as each action is included and called in isolation.
+    </p>
+    <p>This means if there is a file in the following directories:</p>
+    <pre><code>|- /var/www/project-root/actions/index.php
+|- /var/www/project-root/actions/blog/index.php
+    </code></pre>
+    <p>Both files would define a class called <code>Index</code> without namespace and it should work without problem:</p>
+    <pre><code>&lt;?php
+class Index {
+    public function get() {
+        return "Hello from index action";
+    }
+}
+</code></pre>
+</section>

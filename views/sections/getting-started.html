@@ -1,0 +1,88 @@
+<section id="getting-started">
+    <h3>Getting Started</h3>
+    
+    <div>
+        <h4>1. Creating the project structure</h4>
+        <p>
+            Create the following structure in the project folder, for example 
+            <code>/var/www/project-root</code>
+        </p>
+        
+        <pre><code>/var/www/project-root
+│- /actions          # PHP action handlers
+│- /views            # HTML templates and views
+│- /public           # Publicly accessible files (index.php, assets, etc.)</code></pre>
+        
+    </div>
+    <div>
+        <h4>2. Get the SWSE from GitHub</h4>                    
+        <p>Then get the SWSE repository from <a href="https://github.com/nchankov/swse">GitHub</a></p>
+        <p>
+            Place the repository into the <code>/var/www/project-root/swse</code> directory. The new 
+            structure would look like this:
+        </p>
+        <pre><code>/var/www/project-root
+│- /actions          # PHP action handlers
+│- /views            # HTML templates and views
+│- /public           # Publicly accessible files (index.php, assets, etc.)
+│- /swse             # SWSE core engine files</code></pre>
+    </div>
+    <div>
+        <h4>3. Add Public files into the public directory</h4>
+        
+        <div>
+            <h4>.htaccess file</h4>
+            <p>Add the following file into <code>/var/www/project-root/public/.htaccess</code></p>
+            <pre class="copy"><code>RewriteEngine On
+
+# Don't rewrite files or directories that exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route everything through index.php
+RewriteRule ^(.*)$ index.php [QSA,L]</code></pre>
+            <p>
+                <em>This would redirect any request through <code>index.php</code> in the public directory.</em>
+                See an example how to use url rewrites <a href="/examples/rewrites">here</a>.
+            </p>
+        </div>
+        <div>
+            <h4>index.php file</h4>
+
+            <p>Add the following file into <code>/var/www/project-root/public/index.php</code></p>
+            <pre class="copy"><code>&lt;?php
+include_once(__DIR__ . '/../swse/engine.php');
+process(dirname(__DIR__));</code></pre>
+            <p>
+                <em>
+                    This file initializes the SWSE engine and processes incoming requests. Adjust the path 
+                    to the engine in case the structure is different.
+                </em>
+            </p>
+        </div>
+    </div>
+    <div>
+        <h4>4. (Optional) Add .env file into project root directory</h4>
+        <p>
+            Create a .env file into the project root directory
+        </p>
+        
+        <pre><code>/var/www/project-root
+│- /actions
+│- /views
+│- /public
+|- .env           # Project configurations</code></pre>
+        <p>
+            Place configuration settings in the .env file. Such as database connection, 
+            stripe keys, turnstile secrets, etc. Example:
+        </p>
+        <pre><code>#.env file
+APP_ID=app_id
+PAGINATION=20</code></pre>
+        <p><em>It's a good practice to use all caps for the parameter names.</em></p>
+        <p>
+            The parameters can be accessed with <code>$_ENV['APP_ID']</code> in the actions or 
+            <code>&lt;!--e('APP_ID')--&gt;</code> in the views.
+        </p>
+    </div>
+</section>

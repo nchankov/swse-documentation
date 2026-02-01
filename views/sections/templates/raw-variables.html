@@ -1,0 +1,15 @@
+<section id="array-access">
+    <h3>Raw Variables</h3>
+    <p>
+        By default the variable values are converted into HTML entities. To output raw variable values without any 
+        escaping, use the following syntax:
+    </p>
+    <pre><code><span class="code-highlight">&lt;!--($raw)--&gt;</span>
+//outputs raw variable value e.g. &lt;h1&gt;Hello&lt;/h1&gt;
+</code></pre>    
+    <p>
+        This is useful if the variable contains HTML content that should be rendered as-is without escaping.
+    </p>
+    <p><em>Warning: 
+        Be cautious when using raw variables from user's input to avoid XSS vulnerabilities.</em></p>
+</section>
