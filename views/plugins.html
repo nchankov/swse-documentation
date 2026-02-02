@@ -1,0 +1,81 @@
+<!--layout:/default.html ["title" => "Plugins Documentation"]-->
+
+<section id="overview">
+    <h3>Overview</h3>
+    <p>
+        Plugins are encapsulated pieces of functionality containing both actions, templates and even layouts in a single 
+        directory. They can be easily shared and reused across multiple projects.
+    </p>
+</section>
+
+<section id="plugin-structure">
+    <h3>Structure of a Plugin</h3>
+    <p>
+        Each Plugin should have the following structure:
+    </p>
+    <pre><code>/var/www/project-root/plugin-name
+|-  /actions
+|   |- index.php
+|   |- action1.php
+|   |- action2.php
+|-  /views
+|   |- /index.html
+|   |- /action1.html
+|   |- /action2.html
+|-  /layouts
+|   |- layout1.html</code></pre>
+</section>
+
+<section id="url-structure">
+    <h3>URL Structure</h3>
+    <p>
+        When a plugin is installed, its actions are accessible via URLs prefixed with the plugin name. For example, if 
+        a plugin named <code>blog</code> has an action called <code>view-post</code>, it would be accessible at:
+    </p>
+    <pre><code>http://yourdomain.com/blog/view-post</code></pre>
+    <p>
+        The default action (and view of the plugin) should be named <code>index.php</code> for actions and <code>
+        index.html</code> for views.
+    </p>
+    <p>The default action is accessible at the root URL of the plugin. e.g.</p>
+    <pre><code>http://yourdomain.com/plugin-name</code></pre>
+</section>
+
+<section id="overwriting">
+    <h3>Overwriting Plugin Actions and Views</h3>
+    <p>
+        Plugin files can be overwritten by the files in the main project directories. This way you can overwrite the 
+        actions but leave the views served from the plugin and vice versa - leave actions from the plugin but change the
+        views for that specific project.
+    </p>
+    <h4>Example of Overwriting:</h4>
+    <pre><code>/var/www/project-root
+|-  /blog                 # Main plugin directory
+|   |-  /actions
+|   |   |- index.php
+|   |   |- article.php
+|   |-  /views
+|       |- index.html
+|       |- article.html
+|-  /actions              # Main project actions directory
+|   |- blog               # Overwriting the blog plugin actions
+|       |- article.php    # This action will be used instead of the one in the plugin
+|-  /views                # Main project views directory
+    |- blog               # Overwriting the blog plugin views
+        |- index.html     # This view will be used instead of the one in the plugin   
+    </code></pre>
+</section>
+
+<section id="templates">
+    <h3>Templates</h3>
+    <p>When using includes in the plugin, use the following path:</p>
+    <pre><code>&lt;!--include:/plugin-name/sections/filename.html--&gt;</code></pre>
+    <p>This will reference the view in the plugin views folder or the file user would be:</p>
+    <pre><code>/var/www/project-root/blog/views/sections/filename.html</code></pre>
+    </code></pre>
+    <h3>Layouts</h3>
+    <p>When using layouts in the plugin, use the following path:</p>
+    <pre><code>&lt;!--layout:/plugin-name/layoutname.html--&gt;</code></pre>
+    <p>This will reference the layout in the plugin layouts folder or the file user would be:</p>
+    <pre><code>/var/www/project-root/blog/layouts/layoutname.html</code></pre>
+</section>
