@@ -13,17 +13,17 @@
     <p>
         Each Plugin should have the following structure:
     </p>
-    <pre><code>/var/www/project-root/plugin-name
-|-  /actions
-|   |- index.php
-|   |- action1.php
-|   |- action2.php
-|-  /views
-|   |- /index.html
-|   |- /action1.html
-|   |- /action2.html
-|-  /layouts
-|   |- layout1.html</code></pre>
+    <pre><code>/var/www/project-root/plugin-name/
+|-- actions/
+|   |-- index.php
+|   |-- action1.php
+|   |-- action2.php
+|-- views/
+|   |-- index.html
+|   |-- action1.html
+|   |-- action2.html
+|-- layouts/
+|   |-- layout1.html</code></pre>
 </section>
 
 <section id="url-structure">
@@ -49,20 +49,20 @@
         views for that specific project.
     </p>
     <h4>Example of Overwriting:</h4>
-    <pre><code>/var/www/project-root
-|-  /blog                 # Main plugin directory
-|   |-  /actions
-|   |   |- index.php
-|   |   |- article.php
-|   |-  /views
-|       |- index.html
-|       |- article.html
-|-  /actions              # Main project actions directory
-|   |- blog               # Overwriting the blog plugin actions
-|       |- article.php    # This action will be used instead of the one in the plugin
-|-  /views                # Main project views directory
-    |- blog               # Overwriting the blog plugin views
-        |- index.html     # This view will be used instead of the one in the plugin   
+    <pre><code>/var/www/project-root/
+|-- blog/                       # Main plugin directory
+|   |-- actions/
+|       |-- index.php
+|       |-- article.php
+|   |-- views/
+|        |-- index.html
+|        |-- article.html
+|-- actions/                    # Main project actions directory
+|   |-- blog/                   # Overwriting the blog plugin actions
+|       |-- article.php         # This action will be used instead of the one in the plugin
+|-- views/                      # Main project views directory
+|   |-- blog/                   # Overwriting the blog plugin views
+|       |-- index.html          # This view will be used instead of the one in the plugin   
     </code></pre>
 </section>
 
@@ -71,11 +71,22 @@
     <p>When using includes in the plugin, use the following path:</p>
     <pre><code>&lt;!--include:/plugin-name/sections/filename.html--&gt;</code></pre>
     <p>This will reference the view in the plugin views folder or the file user would be:</p>
-    <pre><code>/var/www/project-root/blog/views/sections/filename.html</code></pre>
+    <pre><code>/var/www/project-root/plugin-name/views/sections/filename.html</code></pre>
     </code></pre>
+
+    <h3>Including Plugin Templates into the main project</h3>
+    <p>You can also include the plugin templates into the main project templates using the following:</p>
+    <pre><code>&lt;!--include://plugin-name//sections/filename.html--&gt;</code></pre>
+    <p>This will reference the view in the plugin views folder or the file user would be:</p>
+    <pre><code>/var/www/project-root/plugin-name/views/sections/filename.html</code></pre>
+    <p>
+        This is useful in cases where part of the plugin is required to be included on the project. For example contact 
+        plugin could provide the contact form template which can be included into the project page.
+    </p>
+
     <h3>Layouts</h3>
     <p>When using layouts in the plugin, use the following path:</p>
     <pre><code>&lt;!--layout:/plugin-name/layoutname.html--&gt;</code></pre>
     <p>This will reference the layout in the plugin layouts folder or the file user would be:</p>
-    <pre><code>/var/www/project-root/blog/layouts/layoutname.html</code></pre>
+    <pre><code>/var/www/project-root/plugin-name/layouts/layoutname.html</code></pre>
 </section>

@@ -8,10 +8,10 @@
             <code>/var/www/project-root</code>
         </p>
         
-        <pre><code>/var/www/project-root
-│- /actions          # PHP action handlers
-│- /views            # HTML templates and views
-│- /public           # Publicly accessible files (index.php, assets, etc.)</code></pre>
+        <pre><code>/var/www/project-root/
+│-- actions/                    # PHP action handlers
+│-- views/                      # HTML templates and views
+│-- public/                     # Publicly accessible files (index.php, assets, etc.)</code></pre>
         <p>
             Please make sure that the document root is set to the <code>/var/www/project-root/public</code> directory.
             This would prevent unauthorized access to the application code and views.
@@ -24,11 +24,11 @@
             Place the repository into the <code>/var/www/project-root/swse</code> directory. The new 
             structure would look like this:
         </p>
-        <pre><code>/var/www/project-root
-│- /actions          # PHP action handlers
-│- /views            # HTML templates and views
-│- /public           # Publicly accessible files (index.php, assets, etc.)
-│- /swse             # SWSE core engine files</code></pre>
+        <pre><code>/var/www/project-root/
+│-- actions/                    # PHP action handlers
+│-- views/                      # HTML templates and views
+│-- public/                     # Publicly accessible files (index.php, assets, etc.)
+│-- swse/                       # SWSE core engine files</code></pre>
     </div>
     <div>
         <h4>3. Add Public files into the public directory</h4>
@@ -70,11 +70,11 @@ process(dirname(__DIR__));</code></pre>
             Create a .env file into the project root directory
         </p>
         
-        <pre><code>/var/www/project-root
-│- /actions
-│- /views
-│- /public
-|- .env           # Project configurations</code></pre>
+        <pre><code>/var/www/project-root/
+│-- actions/
+│-- views/
+│-- public/
+│-- .env                        # Project configurations</code></pre>
         <p>
             Place configuration settings in the .env file. Such as database connection, 
             stripe keys, turnstile secrets, etc. Example:

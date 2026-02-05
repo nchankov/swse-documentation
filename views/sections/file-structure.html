@@ -6,19 +6,19 @@
         create a /blog directory in both actions and views folders.
     </p>
     <h4>Code in /blog directory:</h4>
-        <pre><code>/var/www/project-root/blog
-│- /index.php          # Handle article list requests (with pagination)
-│- /article.php        # Handle single article requests
+        <pre><code>/var/www/project-root/blog/
+│-- index.php                        # Handle article list requests (with pagination)
+│-- article.php                      # Handle single article requests
 </code></pre>
     <h4>Urls for those actions:</h4>
-    <pre><code>https://example.com/blog/           # would map to /blog/index.php
-https://example.com/blog/article    # would map to /blog/article.php</code></pre>
+    <pre><code>https://example.com/blog/            # would map to /blog/index.php
+https://example.com/blog/article     # would map to /blog/article.php</code></pre>
     <p>
         The same structure would be used in the views folder to organize the templates. For example:
     </p>
-    <pre><code>/var/www/project-root/views/blog
-│- /index.html           # Template for article list
-│- /article.html         # Template for single article
+    <pre><code>/var/www/project-root/views/blog/
+│-- index.html        # Template for article list
+│-- article.html      # Template for single article
 </code></pre>
     <p><em>Note that index in each url cold be skipped as this would be the default file in the directory</em></p>
 </section>
