@@ -2,19 +2,21 @@
     <h3>Helper Methods</h3>
     
     <div>
-        <h4>redirect($url, $status = 302)</h4>
+        <h5>redirect($url, $status = 302)</h5>
         
         <pre><code>redirect('/success');              // Redirect to another page</code></pre>
     </div>
 
     <div>
-        <h4>json($data, $status = 200)</h4>
+        <h5>json($data, $status = 200)</h5>
         <pre><code>return json(['status' => 'ok']);          // Return JSON response instead of html content
 return json(['status' => 'failed'], 503); // Return JSON response instead of html content with status code 501</code></pre>
     </div>
     
     <div>
         <h4>Data Access</h4>
+        <p>Using these functions would sanitize the variables. Avoid using raw input data directly like $_POST, $_GET or $_REQUEST.</p>
+        <br>
         <h5>getPost($key, $default = null)</h5>
         <pre><code>$name = getPost('name', 'default');     // Get POST data sanitized</code></pre>
         <h5>getQuery($key, $default = null)</h5>
@@ -30,6 +32,7 @@ $msg = getFlash('success');             // Get and clear flash</code></pre>
     </div>
     <div>
         <h4>Security</h4>
+        <h5>verifyCsrf()</h5>
         <pre><code>verifyCsrf();</code></pre>
         <p>
             Use this in the post method to protect against CSRF attacks. If the CSRF token is invalid, the request 
