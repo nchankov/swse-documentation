@@ -2,24 +2,28 @@
     <h3>Helper Methods</h3>
     
     <div>
-        <h4>Navigation</h4>
+        <h4>redirect($url, $status = 302)</h4>
+        
         <pre><code>redirect('/success');              // Redirect to another page</code></pre>
     </div>
 
     <div>
-        <h4>JSON Responses</h4>
+        <h4>json($data, $status = 200)</h4>
         <pre><code>return json(['status' => 'ok']);          // Return JSON response instead of html content
 return json(['status' => 'failed'], 503); // Return JSON response instead of html content with status code 501</code></pre>
     </div>
     
     <div>
         <h4>Data Access</h4>
-        <pre><code>$name = getPost('name', 'default');     // Get POST data sanitized
-$query = getQuery('q', '');             // Get GET data sanitized</code></pre>
+        <h5>getPost($key, $default = null)</h5>
+        <pre><code>$name = getPost('name', 'default');     // Get POST data sanitized</code></pre>
+        <h5>getQuery($key, $default = null)</h5>
+        <pre><code>$query = getQuery('q', '');             // Get GET data sanitized</code></pre>
         <p>Using those methods helps prevent XSS attacks by sanitizing input data.</p>
     </div>
     <div>
         <h4>Flash Messages</h4>
+        <h5>setFlash($key, $message)</h5>
         <pre><code>setFlash('success', 'Message sent!');   // Set flash message
 $msg = getFlash('success');             // Get and clear flash</code></pre>
         <p>See how to use flash messages in templates <a href="/templates#helpers">here</a>.</p>
