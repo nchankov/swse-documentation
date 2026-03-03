@@ -1,12 +1,15 @@
 <section id="helper-methods">
     <h3>Helper Methods</h3>
-    <p>All action classes extend <code>App</code> and have access to these helper methods:</p>
     
     <div>
         <h4>Navigation</h4>
-        <pre><code>redirect('/success');              // Redirect to another page
-json(['status' => 'ok']);          // Return JSON response instead of html content
-json(['status' => 'failed'], 503); // Return JSON response instead of html content with status code 501</code></pre>
+        <pre><code>redirect('/success');              // Redirect to another page</code></pre>
+    </div>
+
+    <div>
+        <h4>JSON Responses</h4>
+        <pre><code>return json(['status' => 'ok']);          // Return JSON response instead of html content
+return json(['status' => 'failed'], 503); // Return JSON response instead of html content with status code 501</code></pre>
     </div>
     
     <div>
