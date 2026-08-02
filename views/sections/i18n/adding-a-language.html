@@ -1,0 +1,35 @@
+<section id="adding-a-language">
+    <h3>Adding A Language, Step By Step</h3>
+    <p>
+        Adding German to a website which is currently English only:
+    </p>
+    <ol>
+        <li>
+            Add <code>LOCALES=en,de</code> to the <code>.env</code> file. English is listed first, so it stays
+            the default and all its URLs stay where they are.
+        </li>
+        <li>
+            Create <code>views/de/</code> and translate the pages into it, starting with
+            <code>views/de/index.html</code>. Pages which are not there yet keep serving English.
+        </li>
+        <li>
+            Create <code>lang/de.php</code> and move the strings which repeat across the website into it, then
+            replace them in the templates with <code>&lt;!--t:...--&gt;</code> and in the actions with
+            <code>__()</code>.
+        </li>
+        <li>
+            Put <code>&lt;!--locale--&gt;</code> in the <code>lang</code> attribute of the layout and
+            <code>&lt;!--hreflang--&gt;</code> in its <code>&lt;head&gt;</code>, and set
+            <code>BASE_URL</code> so the alternate links are absolute.
+        </li>
+        <li>
+            Add a <a href="#language-switcher">language switcher</a>, and optionally
+            <code>LOCALE_REDIRECT=true</code> so first time visitors land in their own language.
+        </li>
+    </ol>
+    <p>
+        Removing a language is the reverse and is just as safe: take it out of <code>LOCALES</code> and its
+        prefix stops being recognised, at which point the files under that locale directory are simply never
+        read.
+    </p>
+</section>

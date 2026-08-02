@@ -1,0 +1,58 @@
+<section id="in-actions">
+    <h3>Translations In Actions</h3>
+    <p>
+        Actions are code, and code is not translated. There is no <code>actions/de/</code> directory, the same
+        action runs for every language. What an action can do is translate the strings it produces, with the
+        <code>__()</code> helper:
+    </p>
+    <div>
+        <h5>__($text, $vars = [])</h5>
+        <pre><code>&lt;?php
+// actions/contact.php
+class Contact {
+    public function post() {
+        verifyCsrf();
+
+        if (getPost('email') === '') {
+            setFlash('error', <span class="code-highlight">__('Please enter your email address')</span>);
+            redirect('/contact');
+        }
+
+        setFlash('success', <span class="code-highlight">__('Thanks {name}, we will be in touch', ['name' =&gt; getPost('name')])</span>);
+        redirect(<span class="code-highlight">localeUrl('contact', currentLocale())</span>);
+    }
+}</code></pre>
+        <p>
+            It looks the text up in the dictionary of the current language, exactly like
+            <code>&lt;!--t:...--&gt;</code> does in a template, and returns the text unchanged when there is no
+            translation for it.
+        </p>
+    </div>
+    <div>
+        <h5>currentLocale()</h5>
+        <pre><code>$locale = currentLocale();      // "de" on /de/about, the default language elsewhere</code></pre>
+        <p>
+            Useful when the action has to pick something itself, a date format or a currency for example, or
+            when it loads content from a database column which depends on the language.
+        </p>
+    </div>
+    <div>
+        <h5>localeUrl($route, $locale)</h5>
+        <pre><code>localeUrl('about', 'de');       // "/de/about"
+localeUrl('about', 'en');       // "/about"    - the default language has no prefix
+localeUrl('index', 'de');       // "/de/"</code></pre>
+        <p>
+            Builds the address of a route in a given language. Use it whenever an action redirects, so the
+            visitor stays in the language they were browsing in.
+        </p>
+    </div>
+    <div>
+        <h5>availableLocales() and defaultLocale()</h5>
+        <pre><code>availableLocales();             // ["en", "de", "fr"], empty when translations are off
+defaultLocale();                // "en"</code></pre>
+    </div>
+    <p>
+        The route which is being served, without its language prefix, is available as
+        <code>$_ENV['ROUTE']</code> in an action and as <code>&lt;!--e("ROUTE")--&gt;</code> in a template.
+    </p>
+</section>

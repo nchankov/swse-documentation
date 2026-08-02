@@ -8,4 +8,17 @@
     </p>
     <pre class="copy"><code># .gitignore file
 swse</code></pre>
+    <h4>Translations</h4>
+    <p>
+        Serving the website in more than one language is switched on from the <code>.env</code> file:
+    </p>
+    <pre class="copy"><code># .env file
+LOCALES=en,de,fr
+LOCALE_REDIRECT=true</code></pre>
+    <p>
+        <code>LOCALES</code> is the list of languages, the first one being the default one which is served
+        without a URL prefix. <code>LOCALE_REDIRECT</code> is optional and sends a visitor landing on the root
+        of the website to the language of their browser. When <code>LOCALES</code> is not set, nothing
+        changes. See the <a href="/i18n">translations</a> section for the details.
+    </p>
 </section>

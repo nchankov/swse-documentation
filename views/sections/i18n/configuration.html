@@ -1,0 +1,47 @@
+<section id="configuration">
+    <h3>Configuration</h3>
+    <p>
+        Translations are switched on from the <code>.env</code> file in the project root:
+    </p>
+    <pre class="copy"><code># .env file
+LOCALES=en,de,fr
+LOCALE_REDIRECT=true</code></pre>
+    <div>
+        <h4>LOCALES</h4>
+        <p>
+            A comma separated list of the languages the website is served in. <strong>The first one is the
+            default language</strong>, which means it is the language the untranslated source files are
+            written in.
+        </p>
+        <p>
+            Only codes like <code>en</code> or <code>pt-BR</code> are accepted. Anything else is a
+            configuration mistake, it is skipped with a warning and it never reaches the filesystem.
+        </p>
+    </div>
+    <div>
+        <h4>LOCALE_REDIRECT</h4>
+        <p>
+            Optional. When it is set to <code>true</code>, a visitor landing on the bare root of the website
+            is redirected to the language from their browser's <code>Accept-Language</code> header.
+        </p>
+        <p>
+            Only the root is negotiated this way. A real URL such as <code>/about</code> always serves the
+            same content to everybody, because serving different content from the same address breaks
+            caching and confuses crawlers.
+        </p>
+        <p>
+            The redirect is a temporary one, and a language the visitor picked themselves is remembered for
+            the session and wins over the browser header from that point on.
+        </p>
+    </div>
+    <div>
+        <h4>BASE_URL</h4>
+        <p>
+            Optional, but recommended when the <code>&lt;!--hreflang--&gt;</code> directive is used. It keeps
+            the generated alternate links absolute, which is what search engines expect. Without it the
+            engine falls back to the host of the current request.
+        </p>
+        <pre class="copy"><code># .env file
+BASE_URL=https://example.com</code></pre>
+    </div>
+</section>

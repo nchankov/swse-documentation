@@ -1,0 +1,35 @@
+<section id="overview">
+    <h3>Overview</h3>
+    <p>
+        SWSE can serve the same website in several languages. The language of a request is decided by the
+        URL, the translated content is picked up from the filesystem, and the strings which are not part of
+        the content come from a dictionary file.
+    </p>
+    <p>
+        There are two mechanisms and they are used for different things:
+    </p>
+    <ul>
+        <li>
+            <strong>Localised files</strong> - <code>views/de/about.html</code> shadows
+            <code>views/about.html</code>. Use this for page content and prose. A missing file falls back to
+            the default language automatically.
+        </li>
+        <li>
+            <strong>Dictionary</strong> - <code>lang/de.php</code> returns
+            <code>['Read more' =&gt; 'Weiterlesen']</code>. Use this for the chrome around the content:
+            buttons, labels, form errors, flash messages.
+        </li>
+    </ul>
+    <p>
+        <em>
+            Rule of thumb: a string which appears on three or more pages belongs in the dictionary, page
+            specific prose belongs in a localised file.
+        </em>
+    </p>
+    <p>
+        Translations are completely optional. When <code>LOCALES</code> is not set in the <code>.env</code>
+        file, every function described on this page does nothing and the engine behaves exactly as it did
+        before translations existed. Adding translations to an existing website never moves the URLs which
+        are already published.
+    </p>
+</section>

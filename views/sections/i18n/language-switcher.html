@@ -1,0 +1,50 @@
+<section id="language-switcher">
+    <h3>A Language Switcher</h3>
+    <p>
+        The engine does not render a language switcher, because where it goes and what it looks like is a
+        decision of the website. Building one is a few lines: ask the engine which languages exist and where
+        the current page lives in each of them.
+    </p>
+    <p>
+        Prepare the links in an action, or in a common parent class so that every page has them:
+    </p>
+    <pre class="copy"><code>&lt;?php
+// actions/about.php
+class About {
+    public function get() {
+        $languages = [];
+
+        foreach (availableLocales() as $locale) {
+            $languages[] = [
+                'code' =&gt; $locale,
+                'url' =&gt; localeUrl($_ENV['ROUTE'], $locale),
+                'current' =&gt; $locale === currentLocale() ? 'current' : '',
+            ];
+        }
+
+        return ['languages' =&gt; $languages];
+    }
+}</code></pre>
+    <p>
+        Then render them in the template:
+    </p>
+    <pre class="copy"><code>&lt;ul class="languages"&gt;
+&lt;!--foreach($languages as $language)--&gt;
+    &lt;li class="&lt;!--$language[current]--&gt;"&gt;
+        &lt;a href="&lt;!--$language[url]--&gt;"&gt;&lt;!--$language[code]--&gt;&lt;/a&gt;
+    &lt;/li&gt;
+&lt;!--endforeach--&gt;
+&lt;/ul&gt;</code></pre>
+    <p>
+        Because the links point at the same route in another language, the visitor stays on the page they were
+        reading instead of being sent back to the homepage. Following one of them also stores the choice in
+        the session, so <code>LOCALE_REDIRECT</code> respects it on the next visit.
+    </p>
+    <p>
+        <em>
+            A page which has no action of its own can still build the same list, as long as something in the
+            request prepares it. Adding it to a shared parent class of the actions is the usual way to keep it
+            in one place.
+        </em>
+    </p>
+</section>

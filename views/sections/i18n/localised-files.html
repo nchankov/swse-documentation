@@ -1,0 +1,60 @@
+<section id="localised-files">
+    <h3>Localised Files</h3>
+    <p>
+        A translated page is a file placed in a directory named after the locale, directly below the
+        directory it belongs to. It shadows the file with the same name in the default language:
+    </p>
+    <pre><code>project-root/
+├── views/
+│   ├── index.html          // default language
+│   ├── about.html          // default language
+│   ├── <span class="code-highlight">de/</span>
+│   │   ├── index.html      // German homepage
+│   │   └── about.html      // German about page
+│   └── <span class="code-highlight">fr/</span>
+│       └── index.html      // French homepage
+└── layouts/
+    ├── default.html
+    └── <span class="code-highlight">de/</span>
+        └── default.html    // German layout</code></pre>
+    <p>
+        Localisation happens directly below a <code>views/</code> or a <code>layouts/</code> directory, in the
+        project or in a plugin. Everything else, including the <code>actions/</code> directory, is never
+        localised.
+    </p>
+    <div>
+        <h4>Fallback</h4>
+        <p>
+            When the translated file does not exist, the default language file is served instead. In the
+            example above <code>/fr/about</code> renders the French layout if there is one and the English
+            <code>views/about.html</code> as content, because <code>views/fr/about.html</code> was never
+            written.
+        </p>
+        <p>
+            This means a website can be translated one page at a time. Nothing breaks while the translation
+            is incomplete, the untranslated pages simply keep showing the default language.
+        </p>
+    </div>
+    <div>
+        <h4>Includes Inside A Translated File</h4>
+        <p>
+            Includes are written the same way in a translated file as they are in the original, without the
+            locale in the path:
+        </p>
+        <pre><code>&lt;!--layout:/default.html ["title" =&gt; "Über uns"]--&gt;
+&lt;!--include:sections/team.html--&gt;</code></pre>
+        <p>
+            Each included file is resolved for the current language on its own, so
+            <code>views/de/sections/team.html</code> is used when it exists and
+            <code>views/sections/team.html</code> when it does not. The same applies to the layout, which is
+            why the include above does not have to mention <code>de</code> anywhere.
+        </p>
+    </div>
+    <div>
+        <h4>404 Pages</h4>
+        <p>
+            The not found page is localised as well. Create <code>views/de/404.html</code> to show a German
+            404 page for the German part of the website.
+        </p>
+    </div>
+</section>

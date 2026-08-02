@@ -68,7 +68,23 @@
             records to paginate. See <a href="/examples/pagination">pagionation example</a> in the Examples section.
         </p>
         <p>
-            If there is a variable in the .env called <code>PAGINATION</code> it would be used as pagination value. E.g. 
+            If there is a variable in the .env called <code>PAGINATION</code> it would be used as pagination value. E.g.
             if <code>PAGINATION=20</code> then 20 records would be shown</p>
+    </div>
+    <div id="translations">
+        <h4>Translations</h4>
+        <p>
+            Use
+            <code>&lt;!--t:text--&gt;</code> to translate a string into the language of the current request.
+        </p>
+        <pre><code><span class="code-highlight">&lt;!--t:Read more--&gt;</span>                              // Translate a string
+<span class="code-highlight">&lt;!--t:Showing {count} results ['count'=&gt;42]--&gt;</span>  // Translate with placeholders
+<span class="code-highlight">&lt;!--locale--&gt;</span>                                   // The current language code, e.g. "de"
+<span class="code-highlight">&lt;!--hreflang--&gt;</span>                                 // Alternate language links for the page</code></pre>
+        <p>
+            The text itself is the key it is looked up by, so a string without a translation is rendered as
+            written. See the <a href="/i18n">translations</a> section for the dictionary files and the URL
+            prefixes.
+        </p>
     </div>
 </section>

@@ -31,6 +31,17 @@ $msg = getFlash('success');             // Get and clear flash</code></pre>
         <p>See how to use flash messages in templates <a href="/templates#helpers">here</a>.</p>
     </div>
     <div>
+        <h4>Translations</h4>
+        <h5>__($text, $vars = [])</h5>
+        <pre><code>$message = __('Message sent!');                          // Translate a string
+$message = __('Hello {name}', ['name' => 'Nik']);        // Translate with placeholders</code></pre>
+        <h5>currentLocale()</h5>
+        <pre><code>$locale = currentLocale();                               // "de" on /de/about</code></pre>
+        <h5>localeUrl($route, $locale)</h5>
+        <pre><code>redirect(localeUrl('contact', currentLocale()));         // Redirect without leaving the language</code></pre>
+        <p>See how to translate a website <a href="/i18n">here</a>.</p>
+    </div>
+    <div>
         <h4>Security</h4>
         <h5>verifyCsrf()</h5>
         <pre><code>verifyCsrf();</code></pre>

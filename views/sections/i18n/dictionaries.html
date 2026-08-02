@@ -1,0 +1,69 @@
+<section id="dictionaries">
+    <h3>Dictionaries</h3>
+    <p>
+        A dictionary is a PHP file in the <code>lang/</code> directory of the project, named after the locale,
+        which returns an array:
+    </p>
+    <pre class="copy"><code>&lt;?php
+// lang/de.php
+return [
+    'Read more' =&gt; 'Weiterlesen',
+    'Send message' =&gt; 'Nachricht senden',
+    'Showing {count} results' =&gt; '{count} Ergebnisse',
+];</code></pre>
+    <pre><code>project-root/
+├── lang/
+│   ├── de.php
+│   └── fr.php
+└── views/</code></pre>
+    <div>
+        <h4>The Source Text Is The Key</h4>
+        <p>
+            The key is the string itself, not an invented name like <code>button.read_more</code>. A string
+            which has no translation yet renders as it was written instead of leaking a key onto the page,
+            and the templates stay readable for somebody who does not know which languages exist.
+        </p>
+        <p>
+            For the same reason the default language usually needs no dictionary file at all. The strings in
+            the templates already are the default language.
+        </p>
+    </div>
+    <div>
+        <h4>Placeholders</h4>
+        <p>
+            Values are injected with <code>{name}</code> placeholders, which lets a translation put them in a
+            different position than the original:
+        </p>
+        <pre><code>'Showing {count} results' =&gt; '{count} Ergebnisse gefunden',</code></pre>
+        <p>
+            Substituted values are HTML escaped, so it is safe to pass user input into a placeholder.
+        </p>
+    </div>
+    <div>
+        <h4>Markup In Translations</h4>
+        <p>
+            The translated string itself is emitted as it was authored, which means a dictionary entry may
+            legitimately contain HTML:
+        </p>
+        <pre><code>'Read our &lt;a href="/terms"&gt;terms&lt;/a&gt;' =&gt; 'Lesen Sie unsere &lt;a href="/terms"&gt;Bedingungen&lt;/a&gt;',</code></pre>
+        <p>
+            Dictionaries are project files, written by the same people who write the templates. Never build
+            one from user submitted content.
+        </p>
+    </div>
+    <div>
+        <h4>Plugin Dictionaries</h4>
+        <p>
+            A plugin carries its own dictionary in <code>plugin-name/lang/de.php</code>. When a plugin is
+            serving the request, its dictionary is loaded first and the project dictionary is merged on top of
+            it, so the project can override any individual string of a plugin without touching the plugin
+            itself.
+        </p>
+        <pre><code>project-root/
+├── lang/
+│   └── de.php              // wins
+└── blog/
+    └── lang/
+        └── de.php          // plugin defaults</code></pre>
+    </div>
+</section>

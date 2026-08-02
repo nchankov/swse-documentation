@@ -1,0 +1,46 @@
+<section id="url-prefixes">
+    <h3>URL Prefixes</h3>
+    <p>
+        The first segment of the URL is the single source of truth for the language being served. When it
+        matches one of the configured locales it is taken as the language and removed from the path, and what
+        is left is routed exactly as it would be on a website without translations.
+    </p>
+    <pre><code>LOCALES=en,de,fr
+
+/about        -&gt; views/about.html          // default language, no prefix
+<span class="code-highlight">/de</span>/about     -&gt; views/de/about.html       // German
+<span class="code-highlight">/fr</span>/about     -&gt; views/fr/about.html       // French
+<span class="code-highlight">/de</span>/          -&gt; views/de/index.html
+/contact      -&gt; actions/contact.php       // actions are never prefixed</code></pre>
+    <div>
+        <h4>The Default Language Is Never Prefixed</h4>
+        <p>
+            With <code>LOCALES=en,de,fr</code> the English pages stay on <code>/about</code> and never move to
+            <code>/en/about</code>. This is what makes it safe to add translations to a website which is
+            already published, no existing address changes.
+        </p>
+        <p>
+            Because a page must have exactly one address, a request to the prefixed form of the default
+            language is permanently redirected to the unprefixed one:
+        </p>
+        <pre><code>/en/about  -&gt; 301 -&gt; /about</code></pre>
+    </div>
+    <div>
+        <h4>Unknown Prefixes Are Not Prefixes</h4>
+        <p>
+            A first segment which is not in <code>LOCALES</code> is simply part of the path. With the
+            configuration above, <code>/es/about</code> is not Spanish, it is a request for
+            <code>views/es/about.html</code> in the default language, and it ends in the 404 page when that
+            file does not exist.
+        </p>
+    </div>
+    <div>
+        <h4>Remembering The Choice</h4>
+        <p>
+            Whenever a prefixed URL is served, the language is stored in the session. A visitor who followed
+            a link to <code>/de/about</code> is treated as a German speaker afterwards, which is what makes
+            <code>LOCALE_REDIRECT</code> send them to the German homepage on their next visit to
+            <code>/</code> rather than back to the browser preference.
+        </p>
+    </div>
+</section>

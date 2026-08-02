@@ -1,0 +1,58 @@
+<section id="directives">
+    <h3>Template Directives</h3>
+    <p>
+        Three directives are available in the templates. Like every other directive in SWSE they are written
+        as HTML comments, so a template with translations in it is still a valid HTML file.
+    </p>
+    <div id="translate">
+        <h4>Translate a string</h4>
+        <p>
+            Use the <code>t:</code> prefix to look a string up in the dictionary of the current language:
+        </p>
+        <pre><code>&lt;a href="/blog"&gt;<span class="code-highlight">&lt;!--t:Read more--&gt;</span>&lt;/a&gt;
+&lt;button&gt;<span class="code-highlight">&lt;!--t:Send message--&gt;</span>&lt;/button&gt;</code></pre>
+        <p>
+            Values are passed the same way as they are passed to an include, in square brackets:
+        </p>
+        <pre><code><span class="code-highlight">&lt;!--t:Showing {count} results ['count'=&gt;42]--&gt;</span></code></pre>
+        <p>
+            The text may not span multiple lines. When the string is missing from the dictionary, or when no
+            locales are configured at all, the text is rendered as it was written.
+        </p>
+    </div>
+    <div id="locale">
+        <h4>Current language code</h4>
+        <p>
+            Use <code>&lt;!--locale--&gt;</code> to output the language of the current request, which is what
+            the <code>lang</code> attribute of the document needs:
+        </p>
+        <pre><code>&lt;html lang="<span class="code-highlight">&lt;!--locale--&gt;</span>"&gt;</code></pre>
+        <p>
+            Keep in mind that this outputs an empty string when <code>LOCALES</code> is not configured, so on
+            a single language website write the language code in the layout instead of using this directive.
+        </p>
+    </div>
+    <div id="hreflang">
+        <h4>Alternate language links</h4>
+        <p>
+            Use <code>&lt;!--hreflang--&gt;</code> in the <code>&lt;head&gt;</code> of the layout to tell
+            search engines about the other languages of the page which is being served:
+        </p>
+        <pre><code>&lt;head&gt;
+    &lt;title&gt;&lt;!--$title--&gt;&lt;/title&gt;
+    <span class="code-highlight">&lt;!--hreflang--&gt;</span>
+&lt;/head&gt;</code></pre>
+        <p>
+            On <code>/de/about</code> with <code>LOCALES=en,de,fr</code> it renders:
+        </p>
+        <pre><code>&lt;link rel="alternate" hreflang="en" href="https://example.com/about"&gt;
+&lt;link rel="alternate" hreflang="de" href="https://example.com/de/about"&gt;
+&lt;link rel="alternate" hreflang="fr" href="https://example.com/fr/about"&gt;
+&lt;link rel="alternate" hreflang="x-default" href="https://example.com/about"&gt;</code></pre>
+        <p>
+            The addresses are built from <code>BASE_URL</code> when it is set and from the host of the request
+            when it is not. The directive renders nothing when fewer than two locales are configured, so it
+            can safely stay in a layout which is also used by a single language website.
+        </p>
+    </div>
+</section>
